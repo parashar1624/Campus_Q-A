@@ -5,21 +5,30 @@ from google import genai
 from utils.config import SYSTEM_PROMPT
 
 # TODO: Load environment variables
+load_dotenv()
 
 class LLMClient:
     """Client for interacting with Gemini API for campus event Q&A."""
     
     def __init__(self, api_key: Optional[str] = None):
         # TODO: Initialize the API key
-        # TODO: Raise ValueError if no API key found
-        # TODO: Initialize the genai Client
+        gemini_api_key = os.getenv("GEMINI_API_KEY")
         
+        # TODO: Raise ValueError if no API key found
+        if not gemini_api_key:
+            raise ValueError("GEMINI_API_KEY is not set in the environment variables")
+        # TODO: Initialize the genai Client
+        client1 = genai.Client()
         pass
     
     def call_api(self, user_query: str) -> str:
         """Call Gemini API with system prompt and user query."""
         # TODO: Format the prompt with user query
-        
+        client = genai.Client()
+        response = client.models.generate_content(
+            model="gemini-3-flash-preview",
+            contents=f"{SYSTEM_PROMPT}\nUser Query: {user_query}\nAnswer:"
+        )
         # TODO: Make API call to llm
         
         # TODO: Handle empty or None response
