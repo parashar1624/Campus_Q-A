@@ -65,24 +65,22 @@ def answer_student_query(query: str) -> str:
 
 
 def main():
-    """Main function to demonstrate the API calling functionality."""
+    """Main function to run specific test queries."""
     test_queries = [
-        "When is the Tech Fest happening?",
-        "Where is the Career Fair located?",
-        "Tell me about the Hackathon",
-        "What's the schedule for the Music Concert?",
-        "Tell me a joke",  # Non-event query
-        "What's the weather like?"  # Non-event query
+        "how is weather today?",
+        "Give me detials about tech fest in september."
     ]
     
-    print("Campus Event Q&A Assistant")
-    print("=" * 40)
+    print("Campus Event Q&A Assistant - Test Results")
+    print("=" * 60)
     
-    for query in test_queries:
-        print(f"\nQuery: {query}")
+    for idx, query in enumerate(test_queries, 1):
+        print(f"\nTest Query {idx}:")
+        print(f"Question: {query}")
+        print("-" * 60)
         result = answer_student_query(query)
-        print(f"Response: {result}")
-        print("-" * 40)
+        print(f"Response:\n{result}")
+        print("=" * 60)
 
 
 if __name__ == "__main__":
